@@ -22,9 +22,13 @@
             age : 27
         }
 
-        handleClick(e) {
+        handleClick = (e) => {
             console.log(e.target);
-            // console.log(this.state);  // scope of this   
+            console.log(this.state);  // scope of this 
+            this.setState({
+                name : "Nick",
+                age : 35
+            });
         }
         handleMouseOver(e) {
             console.log(e);    
