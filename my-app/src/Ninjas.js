@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Ninjas.css';
 // class Ninjas extends Component {
 
 //     render() {
@@ -24,16 +24,17 @@ import React from 'react';
 // }
 
 // functional component ie UI Component classless
-const Ninjas = (props) => {
+const Ninjas = ({deleteNinja,ninjas}) => {
 
         // console.log(this.props); 
-        const {ninjas} = props;
+        // const {ninjas} = props;
         const ninjaList = ninjas.map(ninja => {
             return (ninja.age > 24) ? (
            <div className = "Ninja" key = {ninja.id}> 
             <div> Name: {ninja.name} </div>
             <div> Age: {ninja.age} </div>  
-            <div> Belt: {ninja.belt} </div>        
+            <div> Belt: {ninja.belt} </div> 
+            <button onClick = {() => {deleteNinja(ninja.id)}}> Delete Me </button>       
             </div> 
             ) : null;
         })
