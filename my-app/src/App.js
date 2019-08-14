@@ -26,11 +26,24 @@ class App extends Component {
     let ninjas = this.state.ninjas.filter(ninja => {
       return ninja.id !== id;
     })
-    
+
     this.setState({
       ninjas : ninjas
     });
   }
+
+  // Lifecycle hook when page refreshes or restarts
+  componentDidMount() {
+    console.log('component mounted');
+  }
+  // whenver state changes ie you add or remove any ninja
+  componentDidUpdate(prevProps,prevState) {
+    console.log('component updated');
+    console.log(prevProps);
+    console.log(prevState);
+    
+  }
+
   render() {
   return (
     <div className="App">
