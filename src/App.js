@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Items from './Items'
+class App extends React.Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  constructor(props) {
+    super(props);
+    this.state = {
+      items: [
+        { name: "Bread", id: 1, price: 10, isDisplayed: true },
+        { name: "Milk", id: 2, price: 20, isDisplayed: true },
+        { name: "Biscuits", id: 3, price: 5, isDisplayed: true },
+      ]
+    }
+  }
+
+  toggleItem = (id) => {
+    let newList = this.state.items.map(item => item.id === id ? { id: item.id, name: item.name, price: item.price, isDisplayed: !item.isDisplayed } : item);
+    this.setState({
+      items: newList
+    })
+  }
+  render() {
+    const { items } = this.state;
+
+    return (
+      <div className="App" >
+        <h1> My list of Items </h1>
+        <Items items={items} toggleItem={this.toggleItem} />
+      </div>
+    );
+  }
 }
 
 export default App;
